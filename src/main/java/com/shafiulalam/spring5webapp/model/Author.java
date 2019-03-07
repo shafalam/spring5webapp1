@@ -12,18 +12,22 @@ public class Author {
     private String firstname;
     private String lastname;
 
-    @ManyToMany
+    @ManyToMany (mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
-    public String getFirstname() {
-        return firstname;
-    }
+
     public Author(){
 
     }
-    public void Author(String firstname, String lastname){
+    public Author(String firstname, String lastname){
         this.firstname = firstname;
         this.lastname = lastname;
+    }
+
+    public Author(String firstname, String lastname, Set<Book> books){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.books = books;
     }
 
     public long getId() {
@@ -32,6 +36,10 @@ public class Author {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getFirstname() {
+        return firstname;
     }
 
     public void setFirstname(String firstname) {
